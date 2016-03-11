@@ -19,7 +19,7 @@ var DomInputs = (function () {
 // Checks to see if a forecast is selected
     checkForecast: function() {
       if (weatherForcast.value !== "") {
-
+        WeatherInputs.XHRWeather(zipInput.value);
       } else {
         alert("Please select a weather forecast");
       };
