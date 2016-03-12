@@ -1,7 +1,7 @@
 var ForecastOutput = (function() {
 
   var mainWeatherOutputDiv = document.getElementById("main-weather-output");
-  var sntWeatObj;
+  var sntWeatObj; // Shortened sentWeatherObject accessable by all functions
 
   return {
     displayCurrent: function() {
@@ -18,14 +18,25 @@ var ForecastOutput = (function() {
     displayTenDay: function() {
       console.log("Ten Day");
 
+      var dayDivHolder = document.createElement("div");
+      dayDivHolder.id = "day-holder";
+      dayDivHolder.classList.add("day-holder");
+      mainWeatherOutputDiv.appendChild(dayDivHolder);
+      
+      for (var i = 0; i < sntWeatObj.list.length; i++) {
+        var dayDiv = document.createElement("div");
+        dayDiv.id = "day-" + i;
+        dayDiv.classList.add("day-div");
+        dayDivHolder.appendChild(dayDiv);
+      }
     },
 
     generalContentDisplay: function(sentParsedWeatherObject) {
-      console.log(sntWeatObj);
       sntWeatObj = sentParsedWeatherObject;
+      console.log(sntWeatObj);
 
-      mainWeatherOutputDiv.innerHTML = `<p class=headline>Here's the ${sntWeatObj.cnt} day forecast for ${sntWeatObj.city.name} in ${sntWeatObj.city.country}</p>`;
-    
+      mainWeatherOutputDiv.innerHTML = `<p class=headline>Here's your ${sntWeatObj.cnt} day forecast for ${sntWeatObj.city.name}, ${sntWeatObj.city.country}</p>`;
+
       if (sntWeatObj.cnt === 1){
         var funcVar = "displayOneDay";
       } else if (sntWeatObj.cnt === 5) {
@@ -35,6 +46,7 @@ var ForecastOutput = (function() {
       };
 
       ForecastOutput[funcVar](sntWeatObj);
+      console.log("I came back");
     },
 
     timeToHuman: function() {
