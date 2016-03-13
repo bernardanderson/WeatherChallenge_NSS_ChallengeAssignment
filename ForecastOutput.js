@@ -8,10 +8,10 @@ var ForecastOutput = (function() {
     buildDiv: function() {
       for (var i = 0; i < sntWeatObj.list.length; i++) {
         var currentDayDiv = document.getElementById(`day-${i}`);
-        var weatherString = `<p>Day ${i+1}</p>`;
-        weatherString += `<p>Weather: ${sntWeatObj.list[i].weather[0].main}</p>`;
-        weatherString += `<p>Daytime Temp: ${sntWeatObj.list[i].temp.day}</p>`;
-        weatherString += `<p>Nighttime Temp: ${sntWeatObj.list[i].temp.night}</p>`;
+        var weatherString = `<p class="day">Day ${i+1}</p>`;
+        weatherString += `<p class="description">Weather: ${sntWeatObj.list[i].weather[0].description}</p>`;
+        weatherString += `<p class="day-temp">Daytime Temp: ${sntWeatObj.list[i].temp.day}</p>`;
+        weatherString += `<p class="night-temp">Nighttime Temp: ${sntWeatObj.list[i].temp.night}</p>`;
         currentDayDiv.innerHTML = weatherString;
       };
     },
@@ -41,16 +41,16 @@ var ForecastOutput = (function() {
 
       mainWeatherOutputDiv.innerHTML = `<p class=headline>Here's your ${sntWeatObj.cnt} day forecast for ${sntWeatObj.city.name}, ${sntWeatObj.city.country}...</p>`;
 
-      var dayDivHolder = document.createElement("div");
-      dayDivHolder.id = "day-holder";
-      dayDivHolder.classList.add("day-holder");
-      mainWeatherOutputDiv.appendChild(dayDivHolder);
+      var dayBoxHolder = document.createElement("div");
+      dayBoxHolder.id = "day-box-holder";
+      dayBoxHolder.classList.add("day-box-holder");
+      mainWeatherOutputDiv.appendChild(dayBoxHolder);
 
       for (var i = 0; i < sntWeatObj.list.length; i++) {
         var dayDiv = document.createElement("div");
         dayDiv.id = "day-" + i;
         dayDiv.classList.add("day-div");
-        dayDivHolder.appendChild(dayDiv);
+        dayBoxHolder.appendChild(dayDiv);
       }
 
       if (sntWeatObj.cnt === 1){

@@ -1,0 +1,18 @@
+body {
+  box-sizing: border-box;
+}
+
+.day-box-holder {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.day-div {
+  border: 1px solid black;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  flex-grow: 0;
+  flex-basis: 18%;
+}

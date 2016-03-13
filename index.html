@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Weather API Access</title>
-</head>
-<body>
-  <input id="zip-data" type="text" placeholder="Enter a 5 digit zipcode">
-  <select id="weather-forecast">
-    <option value="">--Choose a Forecast--</option>
-    <option value=1>Current Forecast</option>
-    <option value=5>Five Day Forecast</option>
-    <option value=10>Ten Day Forecast</option>
-  </select>
-  <button id="submit-weather">Get Weather Data</button>
 
-  <div id="main-weather-output"></div>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="weatherstyle.css">
+    <title>Weather API Access</title>
+  </head>
 
-  <script type="text/javascript" src="DomInputs.js"></script>
-  <script type="text/javascript" src="WeatherInputs.js"></script>
-  <script type="text/javascript" src="ForecastOutput.js"></script>
-</body>
+  <body>
+
+    <input id="zip-data" type="text" placeholder="Enter a 5 digit zipcode">
+    <select id="weather-forecast">
+      <option value="">--Choose a Forecast--</option>
+      <option value=1>Current Forecast</option>
+      <option value=5>Five Day Forecast</option>
+      <option value=10>Ten Day Forecast</option>
+    </select>
+    <button id="submit-weather">Get Weather Data</button>
+
+    <div id="main-weather-output"></div>
+
+    <script type="text/javascript" src="DomInputs.js"></script>
+    <script type="text/javascript" src="WeatherInputs.js"></script>
+    <script type="text/javascript" src="ForecastOutput.js"></script>
+  </body>
 </html>
