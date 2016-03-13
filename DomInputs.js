@@ -2,7 +2,7 @@ var zipInput = document.getElementById("zip-data");
 var weatherForcast = document.getElementById("weather-forecast");
 var buttonForcast = document.getElementById("submit-weather");
 
-var DomInputs = (function () {
+var DomInputs = (function() {
 
   return {
 
