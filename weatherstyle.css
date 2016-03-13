@@ -10,9 +10,9 @@ body {
 }
 
 .day-div {
-  border: 1px solid black;
+  border: 3px double black;
   margin-left: 2px;
   margin-bottom: 2px;
   flex-grow: 0;
-  flex-basis: 18%;
+  flex-basis: 30%;
 }

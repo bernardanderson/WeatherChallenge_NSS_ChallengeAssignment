@@ -1,7 +1,10 @@
+// States the input elements from the DOM
 var zipInput = document.getElementById("zip-data");
 var weatherForcast = document.getElementById("weather-forecast");
 var buttonForcast = document.getElementById("submit-weather");
 
+// This function contains the code to pull and manipulate information
+//  from the DOM.
 var DomInputs = (function() {
 
   return {
