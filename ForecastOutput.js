@@ -30,20 +30,25 @@ var ForecastOutput = (function() {
     addWeatherToDivs: function() {
       for (var i = 0; i < sntWeatObj.list.length; i++) {
         var currentDayDiv = document.getElementById(`day-${i}`);
-        var weatherString = `<p class="day">${ForecastOutput.timeToHuman(i)}</p>`;
-        
-        weatherString += `<p class="description">Weather: ${ForecastOutput.formatSkyConditions(sntWeatObj.list[i].weather[0].description)}</p>`;
-        
-        var dayTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.day);
-        var nightTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.night);
-        weatherString += `<p class="temps">Hi: ${dayTemp} / Low: ${nightTemp}&degF</p>`;
-        
-        var weatherImg = document.createElement("img");
-        weatherImg.setAttribute("src", `img/${ForecastOutput.addImageToDiv(sntWeatObj.list[i].weather[0].main)}.png`);
-        currentDayDiv.appendChild(weatherImg);
-
+        var weatherString = `<p class="day-title">${ForecastOutput.timeToHuman(i)}</p>`;
         currentDayDiv.innerHTML += weatherString;
 
+        var picTempConditionsDiv = document.createElement("div");
+        picTempConditionsDiv.classList.add("img-temp-cond");
+        currentDayDiv.appendChild(picTempConditionsDiv);
+
+        var weatherImg = document.createElement("img");
+        weatherImg.setAttribute("src", `img/${ForecastOutput.addImageToDiv(sntWeatObj.list[i].weather[0].main)}.png`);
+        picTempConditionsDiv.appendChild(weatherImg);
+
+        var dayTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.day);
+        var nightTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.night);
+        weatherString = `<div class="temps-weather"><p class="temps">Hi: ${dayTemp}&degF / Low: ${nightTemp}&degF</p>`;
+        weatherString += `<p class="description">${ForecastOutput.formatSkyConditions(sntWeatObj.list[i].weather[0].description)}</p></div>`;
+
+        picTempConditionsDiv.innerHTML += weatherString;
+
+        // Adds the color to each individual day divs
         currentDayDiv.classList.add(ForecastOutput.addColorToDayDiv(sntWeatObj.list[i].weather[0].main));
       };
     },
@@ -55,7 +60,6 @@ var ForecastOutput = (function() {
       }).join(" ");
       return capitalizedSkyConditions;
     },
-
 
 // This builds the holders for the weather output on the DOM
     generalContentDisplay: function(sentParsedWeatherObject) {
@@ -85,12 +89,12 @@ var ForecastOutput = (function() {
       return fahrenheitTemp;
     },
 
-// This converts the UNIX time into human readable time
+// This converts UNIX time into human readable time
     timeToHuman: function(sentCurrentDay) {
       var humanDate = new Date(sntWeatObj.list[sentCurrentDay].dt * 1000);
       var dateArray = humanDate.toGMTString().split(" ");
 
-// This object is used to convert the three char day into the full name
+      // This object is used to convert the three char day into the full name
       var dayAbbrObject = 
         { 
           "Mon": "Monday",
