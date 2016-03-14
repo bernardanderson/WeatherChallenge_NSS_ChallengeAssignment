@@ -9,7 +9,7 @@ var DomInputs = (function() {
 
   return {
 
-// This checks to see if the zipcode is valid against a RegEx that looks for 5 digits 
+    // This checks to see if the zipcode is valid against a RegEx that looks for 5 digits 
     checkZip: function() {
       if (/^[0-9]{5}$/.test(zipInput.value)) {
         zipInput.style.backgroundColor = "lightgreen";
@@ -19,7 +19,7 @@ var DomInputs = (function() {
       };
     },
 
-// Checks to see if a forecast is selected
+    // Checks to see if a forecast is selected
     checkForecast: function() {
       if (weatherForcast.value !== "") {
         WeatherInputs.XHRWeather(zipInput.value, weatherForcast.value);
