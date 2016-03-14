@@ -2,6 +2,11 @@ body {
   box-sizing: border-box;
 }
 
+img {
+  width: auto;
+  height: 100px;
+}
+
 .day-box-holder {
   display: flex;
   flex-wrap: wrap;
@@ -10,11 +15,14 @@ body {
 }
 
 .day-div {
+  display: flex;
+  flex: 1 0 0;  /* flex-grow flex-shrink flex-basis */
   border: 3px double black;
+  max-width: 300px;
+  min-width: 300px;
+  min-height: 100px;
   margin-left: 2px;
   margin-bottom: 2px;
-  flex-grow: 0;
-  flex-basis: 30%;
 }
 
 .sky-color-blue {

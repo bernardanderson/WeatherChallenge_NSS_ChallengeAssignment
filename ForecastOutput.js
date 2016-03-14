@@ -13,11 +13,19 @@ var ForecastOutput = (function() {
           return "sky-color-gray";
         };
       };
-
       return "sky-color-blue"
-      // return "#50D0FF"; // Nice sky blue color
-
     },
+
+    addImageToDiv: function(sentSkyCondition) {
+      var skyType = ["Snow", "Rain", "Clouds"]
+      for (var i = 0; i < skyType.length; i++) {
+        if (sentSkyCondition === skyType[i]){
+          return skyType[i];
+        };
+      };
+      return "Clear";
+    },
+
 
     addWeatherToDivs: function() {
       for (var i = 0; i < sntWeatObj.list.length; i++) {
@@ -29,10 +37,14 @@ var ForecastOutput = (function() {
         var dayTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.day);
         var nightTemp = ForecastOutput.tempToFahrenheit(sntWeatObj.list[i].temp.night);
         weatherString += `<p class="temps">Hi: ${dayTemp} / Low: ${nightTemp}&degF</p>`;
-        currentDayDiv.innerHTML = weatherString;
+        
+        var weatherImg = document.createElement("img");
+        weatherImg.setAttribute("src", `img/${ForecastOutput.addImageToDiv(sntWeatObj.list[i].weather[0].main)}.png`);
+        currentDayDiv.appendChild(weatherImg);
+
+        currentDayDiv.innerHTML += weatherString;
 
         currentDayDiv.classList.add(ForecastOutput.addColorToDayDiv(sntWeatObj.list[i].weather[0].main));
-        // currentDayDiv.classList.add = divBgColorClass;
       };
     },
 
